@@ -1,21 +1,15 @@
-import Header from './component/Header.jsx'
-import Sidebar from './component/Sidebar.jsx'
-import ProductList from './component/ProductList.jsx'
-import Footer from './component/footer.jsx'
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import ProductDetail from "./component/product/ProductPage.jsx"
+import Home from './pages/Home.jsx'
 
-
-function App() {
-
+const App = () => {
   return (
-    <>
-      <Header></Header>
-      <div className='flex m-10'>
-        <Sidebar></Sidebar>
-        <ProductList></ProductList>
-      </div>
-      <Footer></Footer>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />}></Route>
+        <Route path="/Product" element={<ProductDetail />}></Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

@@ -2,6 +2,8 @@
 import React from 'react';
 import ProductCard from './Product.jsx';
 import { shoes } from '../contents/image.js'
+import Category from './category.jsx';
+import { Link } from 'react-router-dom';
 
 const products = [
     {
@@ -80,11 +82,15 @@ const products = [
 
 const ProductList = () => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-            {products.map((product, index) => (
-                <ProductCard key={index} product={product} />
-            ))}
-        </div>
+        <Link to={'/Product'}>
+            <Category>
+            </Category>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
+                {products.map((product, index) => (
+                    <ProductCard key={index} product={product} />
+                ))}
+            </div>
+        </Link>
     );
 };
 
