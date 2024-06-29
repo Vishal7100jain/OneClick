@@ -6,6 +6,9 @@ import SupplierInfo from './supplierInfo.jsx';
 import { shoes } from '../../contents/image.js';
 import Header from '../Header.jsx'
 import Footer from '../footer.jsx';
+import Reviews from '../Reviews.jsx';
+import MoreProduct from './MoreProduct.jsx';
+import { useLocation } from 'react-router-dom';
 
 const ProductDetail = () => {
     const product = {
@@ -39,15 +42,38 @@ const ProductDetail = () => {
         }
     };
 
+
+    const products = [
+        {
+            image: shoes,
+            title: 'Round toe leather loafer shoe (Black)',
+            description: 'Prototype ',
+            price: '$120'
+        },
+        {
+            image: shoes,
+            title: 'Round toe leather loafer shoe (Black)',
+            description: 'Prototype',
+            price: '$120'
+        },
+        {
+            image: shoes,
+            title: 'Round toe leather loafer shoe (Black)',
+            description: 'Prototype',
+            price: '$120'
+        }
+    ]
+
+    const location = useLocation()
     return <>
-        <Header></Header>
-        <div className='pl-5'>
-            Home {">"} shoes {">"} <span className='text-black'>
-                Round toe leather loafer shoe(Black)
-            </span>
-        </div>
-        <div className="container mx-auto p-6 bg-white shadow-md rounded-lg m-14">
-            <div className="lg:flex space-x-6">
+        <Header />
+        <div className="lg:container w-full lg:p-6 p-4 bg-white shadow-md rounded-lg my-14">
+            <div className='pl-5'>
+                {location.pathname.split("/")[1]} {"<"} {location.pathname.split("/")[2]} {"<"} <span className='text-black font-bold'>
+                    Round toe leather loafer shoe (Black)
+                </span>
+            </div>
+            <div className="lg:flex lg:space-x-6">
                 <ProductImages mainImage={product.mainImage} thumbnails={product.thumbnails} />
                 <ProductInfo
                     title={product.title}
@@ -59,8 +85,8 @@ const ProductDetail = () => {
                 />
             </div >
             <div className="mt-6">
-                <div className="flex space-x-6 flex-wrap">
-                    <div className="w-1/2">
+                <div className="flex flex-wrap ">
+                    <div className="lg:w-2/5 w-full mb-6 lg:mb-0">
                         <SupplierInfo
                             storeImage={product.supplier.storeImage}
                             storeName={product.supplier.storeName}
@@ -69,24 +95,23 @@ const ProductDetail = () => {
                             openHours={product.supplier.openHours}
                         />
                     </div>
-                    <div>
+                    <div className='shadow-2xl lg:w-auto xs:w-full rounded-xl p-4'>
                         <h2 className="text-xl font-bold mb-2">Specification</h2>
-                        <div className='shadow-2xl rounded-xl w-4/5 p-4'>
-                            <ul className="text-gray-600 space-y-2">
-                                {product.specifications.map((spec, index) => <>
-                                    <div className='flex justify-between'>
-                                        <li key={index}><strong>{spec.label}:</strong> </li>
-                                        <li key={index}> {spec.value}</li>
-                                    </div>
-                                </>
-                                )}
-                            </ul>
-                        </div>
+                        <ul className="text-gray-600 space-y-2">
+                            {product.specifications.map((spec, index) => (
+                                <div className='flex justify-between' key={index}>
+                                    <li><strong>{spec.label}:</strong></li>
+                                    <li>{spec.value}</li>
+                                </div>
+                            ))}
+                        </ul>
                     </div>
                 </div>
             </div>
+            <MoreProduct products={products}></MoreProduct>
+            <Reviews></Reviews>
         </div >
-        <Footer></Footer>
+        <Footer />
     </>
 };
 

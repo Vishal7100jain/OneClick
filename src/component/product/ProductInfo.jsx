@@ -1,22 +1,30 @@
 // ProductInfo.js
 import React from 'react';
+import ReplyIcon from '@mui/icons-material/Reply';
+import CustomButton from '../CustomButton.jsx';
 
-const ProductInfo = ({ title, details, price, discount, description, specifications }) => {
+const ProductInfo = ({ title, details, price, discount }) => {
     return (
-        <div className="w-3/5">
-            <h1 className="text-2xl font-bold mb-2">{title}</h1>
+        <div className="lg:w-3/5">
+            <div className='flex justify-between'>
+                <h1 className="text-2xl font-bold mb-2">{title}</h1>
+                <ReplyIcon></ReplyIcon>
+            </div>
             <div className="flex items-center mb-4">
                 <button className="text-red-600 mr-4"><i className="far fa-heart"></i> Add to my wishlist</button>
             </div>
             <div className="flex mb-4">
-                {details.map((detail, index) => (
+                {details.map((detail, index) => <>
                     <span key={index} className="text-gray-600 mr-4">{detail}</span>
-                ))}
+                </>
+                )}
             </div>
-            <div className="text-2xl text-green-600 mb-4">
-                ₹ {price} <span className="line-through text-gray-600 ml-2">₹ {discount}</span>
+            <div className='flex justify-between'>
+                <div className="text-2xl text-green-600 mb-4">
+                    ₹ {price} <span className="line-through text-gray-600 ml-2">₹ {discount}</span>
+                </div>
+                <CustomButton title="Inquiry Now"></CustomButton>
             </div>
-            <button className="bg-green-600 text-white py-2 px-4 rounded mb-4">Inquiry Now</button>
             <div className="mb-4">
                 <h2 className="text-xl font-bold mb-2">Description</h2>
                 <p className="text-gray-600">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic tempore eius deserunt doloribus similique tempora ea sunt libero repellendus? Nisi tempore excepturi ad maxime ipsum nihil saepe pariatur consequatur quod.

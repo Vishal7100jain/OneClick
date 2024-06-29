@@ -3,6 +3,7 @@ import { Search, TextFields } from '@mui/icons-material';
 import { Button, TextField } from '@mui/material';
 import React from 'react';
 import { profile1, profile2, profile3, profile4, profile5, profile6, profile7, profile8, profile9 } from '../contents/image';
+import CustomButton from './CustomButton';
 
 const categories = [
     'Agriculture',
@@ -27,9 +28,7 @@ const Sidebar = () => {
                 <h2 className="font-bold text-md mr-2">
                     Related categories
                 </h2>
-                <Button className='h-8' variant="contained">
-                    show
-                </Button>
+                <CustomButton title="Show"></CustomButton>
             </div>
             <TextField id="outlined-basic" placeholder='Search' className='rounded-lg p-0' variant="outlined" />
             <ul>

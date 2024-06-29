@@ -10,6 +10,7 @@ const Logo = () => {
             sx={{ flexGrow: 1 }}
             fontSize="large"
             fontWeight={"bold"}
+            style={{ color: "#74CC7E" }}
         >
             One
             <span className='text-secondary relative'>

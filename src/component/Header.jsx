@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Logo from './Logo.jsx';
+import { Link, useLocation } from 'react-router-dom';
 
 const drawerWidth = 240;
 const navItems = ['Home', 'Free listing', 'Service', 'Contact US', 'LogIn/Register'];
@@ -42,7 +43,7 @@ function DrawerAppBar(props) {
     );
 
     const container = window !== undefined ? () => window().document.body : undefined;
-
+    const location = useLocation()
     return (
         <div className='mb-20'>
             <Box sx={{ display: 'flex' }}>
@@ -61,9 +62,21 @@ function DrawerAppBar(props) {
                         <Logo></Logo>
                         <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
                             {navItems.map((item) => (
-                                <Button key={item} sx={{ color: '#000000' }} >
-                                    {item}
-                                </Button>
+                                <Link to={`/${item}`} key={item}>
+                                    <Button sx={{ color: '#000000' }} >
+                                        {location.pathname.split("/")[1] == item ?
+                                            (
+                                                <span className='font-bold flex flex-col justify-center items-center'>
+                                                    {item}
+                                                    <div className='w-3 h-3 bg-third rounded-full'></div>
+                                                </span>
+                                            ) : (
+                                                <span>
+                                                    {item}
+                                                </span>
+                                            )}
+                                    </Button>
+                                </Link>
                             ))}
                         </Box>
                     </Toolbar>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { arrow2, profile10 } from '../contents/image';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import CustomButton from './CustomButton';
 
 function Category() {
     const categories = ['Agriculture', 'Real estate', 'Doctors', 'Beauty&spa']
@@ -48,9 +49,8 @@ function Category() {
                         <MoreVertIcon></MoreVertIcon>
                     </div>
                 </div>
-                <button className="bg-green-500 text-white p-2 w-36 rounded">
-                    Post your requirement
-                </button>
+                <CustomButton title="Post your requirement">
+                </CustomButton>
             </div>
         </div>
     );

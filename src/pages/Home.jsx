@@ -11,7 +11,7 @@ function Home() {
     return (
         <>
             <Header></Header>
-            <div className='flex m-10'>
+            <div className='flex lg:m-10'>
                 <Sidebar></Sidebar>
                 <ProductList></ProductList>
             </div>
